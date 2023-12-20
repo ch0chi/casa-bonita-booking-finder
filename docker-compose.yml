@@ -1,0 +1,10 @@
+version: "3"
+services:
+  casa_bonita_booking_finder:
+    container_name: casa_bonita_booking_finder
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: "container:wireguard"
+    env_file: '.env'
+    command: "npm start"
