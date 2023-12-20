@@ -85,7 +85,7 @@ const stop = () => {
 
 const start = async() => {
     console.log("Starting...");
-    console.log(`Fetch Interval set to ${getIntervalTime()/60} minutes`);
+    console.log(`Fetch Interval set to ${getIntervalTime()} minutes`);
     
     if(getBookingCode() === null) {
         throw new Error("Booking Url has not been set!");
@@ -107,7 +107,7 @@ const start = async() => {
             )
             intervalCount = 0;
         }
-    },parseInt(getIntervalTime())*1000);
+    },parseInt(getIntervalTime())*60000);
 }
 
 let intervalCount = 0;
