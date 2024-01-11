@@ -30,18 +30,10 @@ const checkForNewDates = async() => {
 
     if(data['visit_date_end']){
 
-        let desiredDate = DateTime.fromISO('2024-01-06');
         let visitDateEnd = DateTime.fromISO(data['visit_date_end']);
 
         if(getCurrVisitDateEnd() === null){
             setCurrVisitDateEnd(visitDateEnd);
-        }
-
-        if(visitDateEnd.toISODate() === desiredDate.toISODate()) {
-            //date found! notify in slack and stop interval
-            let message = `The requested date: ${desiredDate.toFormat('DDDD')} is now available!`;
-            await notifySlack(message,true);
-            stop();//stop the scraper interval.
         }
 
         if(visitDateEnd > getCurrVisitDateEnd()) {
